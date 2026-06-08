@@ -1,0 +1,6 @@
+- name: Self-terminate this EC2 instance
+  amazon.aws.ec2_instance:
+    state: absent
+    instance_ids: "{{ lookup('amazon.aws.aws_caller_identity', 'instance_id') }}"
+    region: us-east-1
+  delegate_to: localhost
